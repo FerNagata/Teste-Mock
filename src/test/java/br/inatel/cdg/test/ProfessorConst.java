@@ -30,7 +30,18 @@ public class ProfessorConst {
                 "\"sala\": \"5\", \n " +
                 "\"predio\": [\"1\"] }";
     public static String INEXISTENTE =
-                "{ \"id\": 0, \n " +
-                    "\"nome\": \"Inexistente\"}";
+            "{ \"id\": 0, \n " +
+                    "\"nome\": \"Inexistente\", \n " +
+                    "\"horarioDeAtendimento\": \"Error\", \n " +
+                    "\"periodo\": \"Error\", \n " +
+                    "\"sala\": \"Error\", \n " +
+                    "\"predio\": [\"Error\"] }";
+
+    public static String DEFEITO =
+            "{ \"id\": 0, \n " +
+                    "\"nome\": \"Defeito\", \n " +
+                    "\"horarioDeAtendimento\": \"Error\", \n " +
+                    "\"periodo\": \"Error\", \n " +
+                    "\"sala\": \"Error\"}";
 
 }

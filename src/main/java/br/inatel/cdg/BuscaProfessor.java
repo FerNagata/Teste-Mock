@@ -28,6 +28,7 @@ public class BuscaProfessor {
             predios.add(predio.getAsString());
         });
 
+
         return new Professor(jsonObject.get("id").getAsInt(),
                 jsonObject.get("nome").getAsString(),
                 jsonObject.get("horarioDeAtendimento").getAsString(),

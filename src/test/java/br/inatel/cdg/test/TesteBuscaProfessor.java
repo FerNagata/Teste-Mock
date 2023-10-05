@@ -111,4 +111,39 @@ public class TesteBuscaProfessor {
         assertEquals(esperado, ynoguti.getPredio().size());
     }
 
+    //EP
+    @Test
+    public void testeInexistente() {
+        //Fiz a busca
+        Professor inexistente = buscaProfessor.buscaProfessor(-1);
+
+        //Faz assertion
+        assertEquals("Inexistente", inexistente.getNome());
+    }
+
+    //EP
+    @Test(expected = NullPointerException.class)
+    public void testeDefeito() {
+        //Fiz a busca
+        Professor defeituoso = buscaProfessor.buscaProfessor(-2);
+
+        //Faz assertion
+        assertEquals("Defeito", defeituoso.getNome());
+    }
+
+    //EP
+    @Test(expected = AssertionError.class)
+    public void testeTipoDeVariavelErrada() {
+        //Fiz a busca
+        Professor renzo = buscaProfessor.buscaProfessor(2);
+
+        //Faz assertion
+        assertEquals(renzo.getSala(), 11);
+    }
+
+
+
+
+
+
 }

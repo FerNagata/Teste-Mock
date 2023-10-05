@@ -15,8 +15,12 @@ public class MockProfessorService implements ProfessorService {
             return ProfessorConst.RENZO;
         }else if(id == 3){
             return ProfessorConst.MARCELO;
-        }else{
+        }else if(id == 4){
             return ProfessorConst.YNOGUTI;
+        } else if(id == -1){
+            return ProfessorConst.INEXISTENTE;
+        } else {
+            return ProfessorConst.DEFEITO;
         }
     }
 

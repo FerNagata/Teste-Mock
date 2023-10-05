@@ -32,10 +32,7 @@ public class TesteBuscaProfessor_Mockito {
         assertEquals("Sexta-feira", chris.getHorarioAtendimento());
         assertEquals("Noturno", chris.getPeriodo());
         assertEquals("16", chris.getSala());
-//        assertEquals(4, chris.getPredios());
-
-
+        //assertEquals(4, chris.getPredios());
     }
-
 
 }
