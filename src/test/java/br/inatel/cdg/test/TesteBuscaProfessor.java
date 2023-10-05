@@ -6,6 +6,9 @@ import br.inatel.cdg.ProfessorService;
 import com.google.gson.JsonArray;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class TesteBuscaProfessor {
@@ -38,12 +41,74 @@ public class TesteBuscaProfessor {
         //Fiz a busca
         Professor chris = buscaProfessor.buscaProfessor(1);
 
-        String[] predioEsperado = {"4"};
+        ArrayList<String> prediosEsperados = new ArrayList<>();
+        prediosEsperados.add("4");
 
         assertEquals("16", chris.getSala());
-        assertEquals(predioEsperado, chris.getPredio());
-
-
-
+        assertEquals(prediosEsperados.toArray(), chris.getPredio().toArray());
     }
+
+    @Test
+    public void testeExistePredios(){
+        //Fiz a busca
+        Professor chris = buscaProfessor.buscaProfessor(1);
+
+        boolean esperado = false;
+
+        assertEquals("16", chris.getSala());
+        assertEquals(esperado, chris.getPredio().isEmpty());
+    }
+
+    @Test
+    public void testePredioExistenteSalaInexistenteNoPredio(){
+        //Fiz a busca
+        Professor chris = buscaProfessor.buscaProfessor(1);
+
+        boolean esperado = true;
+
+        assertEquals("16", chris.getSala());
+        assertEquals(esperado, chris.getPredio().contains("4"));
+    }
+
+    @Test
+    public void testePredioInexistenteSalaExistente(){
+        //Fiz a busca
+        Professor ynoguti = buscaProfessor.buscaProfessor(4);
+
+        boolean esperado = false;
+
+        assertEquals("5", ynoguti.getSala());
+        assertEquals(esperado, ynoguti.getPredio().contains("5"));
+    }
+
+    @Test
+    public void testeVerificaPeriodo(){
+        //Fiz a busca
+        Professor ynoguti = buscaProfessor.buscaProfessor(4);
+
+        String esperado = "Integral";
+
+        assertEquals(esperado, ynoguti.getPeriodo());
+    }
+
+    @Test
+    public void testeMaisQueUmPredio(){
+        //Fiz a busca
+        Professor marcelo = buscaProfessor.buscaProfessor(3);
+
+        int esperado = 1;
+
+        assertNotEquals(esperado, marcelo.getPredio().size());
+    }
+
+    @Test
+    public void testeNumeroDePrediosValido(){
+        //Fiz a busca
+        Professor ynoguti = buscaProfessor.buscaProfessor(4);
+
+        int esperado = 1;
+
+        assertEquals(esperado, ynoguti.getPredio().size());
+    }
+
 }

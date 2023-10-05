@@ -3,6 +3,8 @@ package br.inatel.cdg;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.util.ArrayList;
+
 public class BuscaProfessor {
 
     ProfessorService professorService;
@@ -19,12 +21,19 @@ public class BuscaProfessor {
         //jsonObject é um objeto JSON feito a partir da string de retonro
         JsonObject jsonObject = JsonParser.parseString(professorJson).getAsJsonObject();
 
+        ArrayList<String> predios = new ArrayList<>();
+
+        // pegando os prédios do professor
+        jsonObject.getAsJsonArray("predio").forEach((predio) -> {
+            predios.add(predio.getAsString());
+        });
+
         return new Professor(jsonObject.get("id").getAsInt(),
                 jsonObject.get("nome").getAsString(),
                 jsonObject.get("horarioDeAtendimento").getAsString(),
                 jsonObject.get("periodo").getAsString(),
                 jsonObject.get("sala").getAsString(),
-                jsonObject.getAsJsonArray("predio"));
+                predios);
     }
 
     public boolean verificaArrayListExistente(int id){

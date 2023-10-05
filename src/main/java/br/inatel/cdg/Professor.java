@@ -3,6 +3,7 @@ package br.inatel.cdg;
 import com.google.gson.JsonArray;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class Professor {
 
@@ -11,9 +12,9 @@ public class Professor {
     private String horarioAtendimento;
     private String periodo;
     private String sala;
-    private JsonArray predio;
+    private ArrayList<String> predio;
 
-    public Professor(int id, String nome, String horarioAtendimento, String periodo, String sala, JsonArray predio){
+    public Professor(int id, String nome, String horarioAtendimento, String periodo, String sala, ArrayList<String> predio){
         this.id = id;
         this.nome = nome;
         this.horarioAtendimento = horarioAtendimento;
@@ -62,11 +63,11 @@ public class Professor {
         this.sala = sala;
     }
 
-    public JsonArray getPredio() {
+    public ArrayList<String> getPredio() {
         return predio;
     }
 
-    public void setPredio(JsonArray predio) {
+    public void setPredio(ArrayList<String> predio) {
         this.predio = predio;
     }
 }
