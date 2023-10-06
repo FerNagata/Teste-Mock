@@ -131,15 +131,39 @@ public class TesteBuscaProfessor {
         assertEquals("Defeito", defeituoso.getNome());
     }
 
-    //EP
-    @Test(expected = AssertionError.class)
+    @Test
     public void testeTipoDeVariavelErrada() {
         //Fiz a busca
         Professor renzo = buscaProfessor.buscaProfessor(2);
 
         //Faz assertion
-        assertEquals(renzo.getSala(), 11);
+        assertNotEquals(11, renzo.getSala());
     }
+
+    //EP
+    @Test
+    public void testeVariavelSalaEscritaErrada() {
+        //Fiz a busca
+        Professor aquino = buscaProfessor.buscaProfessor(5);
+
+        //Faz assertion
+        assertNotEquals("11", aquino.getSala());
+    }
+
+    //EP
+    @Test
+    public void testeVariavelPredioEscritaErrada() {
+        //Fiz a busca
+        Professor aquino = buscaProfessor.buscaProfessor(5);
+
+        //Faz assertion
+        assertNotEquals("3", aquino.getSala());
+    }
+
+
+
+
+
 
 
 

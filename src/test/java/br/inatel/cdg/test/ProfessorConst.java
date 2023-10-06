@@ -29,8 +29,17 @@ public class ProfessorConst {
                 "\"periodo\": \"Integral\", \n " +
                 "\"sala\": \"5\", \n " +
                 "\"predio\": [\"1\"] }";
+
+    public static String Aquino =
+            "{ \"id\": 5, \n " +
+                    "\"nome\": \"Guilherme Aquino\", \n " +
+                    "\"horarioDeAtendimento\": \"Segunda-feira\", \n " +
+                    "\"periodo\": \"Noturno\", \n " +
+                    "\"sala\": \"doze\", \n " +
+                    "\"predio\": [\"tres\"] }";
+
     public static String INEXISTENTE =
-            "{ \"id\": 0, \n " +
+            "{ \"id\": -1, \n " +
                     "\"nome\": \"Inexistente\", \n " +
                     "\"horarioDeAtendimento\": \"Error\", \n " +
                     "\"periodo\": \"Error\", \n " +
