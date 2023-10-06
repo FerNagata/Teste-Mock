@@ -37,6 +37,23 @@ public class TesteBuscaProfessor {
     }
 
     @Test
+    public void testeBuscaRenzo() {
+
+        //Fiz a busca
+        Professor renzo = buscaProfessor.buscaProfessor(2);
+
+        ArrayList<String> prediosEsperados = new ArrayList<>();
+        prediosEsperados.add("3");
+
+        //Faz assertion
+        assertEquals("Renzo Mesquita", renzo.getNome());
+        assertEquals("Terça-feira", renzo.getHorarioAtendimento());
+        assertEquals("Noturno", renzo.getPeriodo());
+        assertEquals("11", renzo.getSala());
+        assertEquals(prediosEsperados.toArray(), renzo.getPredio().toArray());
+    }
+
+    @Test
     public void testePredioDaSala(){
         //Fiz a busca
         Professor chris = buscaProfessor.buscaProfessor(1);
@@ -53,33 +70,11 @@ public class TesteBuscaProfessor {
         //Fiz a busca
         Professor chris = buscaProfessor.buscaProfessor(1);
 
-        boolean esperado = false;
-
         assertEquals("16", chris.getSala());
-        assertEquals(esperado, chris.getPredio().isEmpty());
+        assertFalse(chris.getPredio().isEmpty());
     }
 
-    @Test
-    public void testePredioExistenteSalaInexistenteNoPredio(){
-        //Fiz a busca
-        Professor chris = buscaProfessor.buscaProfessor(1);
 
-        boolean esperado = true;
-
-        assertEquals("16", chris.getSala());
-        assertEquals(esperado, chris.getPredio().contains("4"));
-    }
-
-    @Test
-    public void testePredioInexistenteSalaExistente(){
-        //Fiz a busca
-        Professor ynoguti = buscaProfessor.buscaProfessor(4);
-
-        boolean esperado = false;
-
-        assertEquals("5", ynoguti.getSala());
-        assertEquals(esperado, ynoguti.getPredio().contains("5"));
-    }
 
     @Test
     public void testeVerificaPeriodo(){
@@ -91,15 +86,6 @@ public class TesteBuscaProfessor {
         assertEquals(esperado, ynoguti.getPeriodo());
     }
 
-    @Test
-    public void testeMaisQueUmPredio(){
-        //Fiz a busca
-        Professor marcelo = buscaProfessor.buscaProfessor(3);
-
-        int esperado = 1;
-
-        assertNotEquals(esperado, marcelo.getPredio().size());
-    }
 
     @Test
     public void testeNumeroDePrediosValido(){
@@ -111,26 +97,6 @@ public class TesteBuscaProfessor {
         assertEquals(esperado, ynoguti.getPredio().size());
     }
 
-    //EP
-    @Test
-    public void testeInexistente() {
-        //Fiz a busca
-        Professor inexistente = buscaProfessor.buscaProfessor(-1);
-
-        //Faz assertion
-        assertEquals("Inexistente", inexistente.getNome());
-    }
-
-    //EP
-    @Test(expected = NullPointerException.class)
-    public void testeDefeito() {
-        //Fiz a busca
-        Professor defeituoso = buscaProfessor.buscaProfessor(-2);
-
-        //Faz assertion
-        assertEquals("Defeito", defeituoso.getNome());
-    }
-
     @Test
     public void testeTipoDeVariavelErrada() {
         //Fiz a busca
@@ -140,7 +106,18 @@ public class TesteBuscaProfessor {
         assertNotEquals(11, renzo.getSala());
     }
 
-    //EP
+    //Espirito de Porco
+    @Test(expected = NullPointerException.class)
+    public void testeDefeito() {
+        //Fiz a busca
+        Professor defeituoso = buscaProfessor.buscaProfessor(-2);
+
+        //Faz assertion
+        assertEquals("Defeito", defeituoso.getNome());
+    }
+
+
+    ////Espirito de Porco
     @Test
     public void testeVariavelSalaEscritaErrada() {
         //Fiz a busca
@@ -150,7 +127,7 @@ public class TesteBuscaProfessor {
         assertNotEquals("11", aquino.getSala());
     }
 
-    //EP
+    ////Espirito de Porco
     @Test
     public void testeVariavelPredioEscritaErrada() {
         //Fiz a busca
@@ -160,9 +137,46 @@ public class TesteBuscaProfessor {
         assertNotEquals("3", aquino.getSala());
     }
 
+    //Espirito de Porco
+    @Test
+    public void testeInexistente() {
+        //Fiz a busca
+        Professor inexistente = buscaProfessor.buscaProfessor(-1);
 
+        //Faz assertion
+        assertEquals("Inexistente", inexistente.getNome());
+    }
 
+    //Espirito de Porco
+    @Test
+    public void testeMaisQueUmPredio(){
+        //Fiz a busca
+        Professor marcelo = buscaProfessor.buscaProfessor(3);
 
+        int esperado = 1;
+
+        assertNotEquals(esperado, marcelo.getPredio().size());
+    }
+
+    //Espirito de Porco
+    @Test
+    public void testePredioInexistenteSalaExistente(){
+        //Fiz a busca
+        Professor ynoguti = buscaProfessor.buscaProfessor(4);
+
+        assertEquals("5", ynoguti.getSala());
+        assertFalse(ynoguti.getPredio().contains("5"));
+    }
+
+    //Espirito de Porco
+    @Test
+    public void testePredioExistenteSalaInexistenteNoPredio(){
+        //Fiz a busca
+        Professor chris = buscaProfessor.buscaProfessor(1);
+
+        assertEquals("16", chris.getSala());
+        assertTrue( chris.getPredio().contains("4"));
+    }
 
 
 
