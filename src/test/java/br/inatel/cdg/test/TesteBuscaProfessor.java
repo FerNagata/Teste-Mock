@@ -18,6 +18,7 @@ public class TesteBuscaProfessor {
 
     @Before
     public void setup() {
+        
         //Criando o contexo do meu teste com o Mock (serviço mock)
         service = new MockProfessorService();
         buscaProfessor = new BuscaProfessor(service);
@@ -31,7 +32,6 @@ public class TesteBuscaProfessor {
 
         //Faz assertion
         assertEquals("Chris Lima", chris.getNome());
-        assertEquals("Sexta-feira", chris.getHorarioAtendimento());
         assertEquals("Noturno", chris.getPeriodo());
         assertEquals("16", chris.getSala());
     }
@@ -51,6 +51,15 @@ public class TesteBuscaProfessor {
         assertEquals("Noturno", renzo.getPeriodo());
         assertEquals("11", renzo.getSala());
         assertEquals(prediosEsperados.toArray(), renzo.getPredio().toArray());
+    }
+
+    @Test
+    public void testeBuscaMarcelo() {
+
+        //Fiz a busca
+        Professor marcelo = buscaProfessor.buscaProfessor(3);
+
+       assertNotNull(marcelo);
     }
 
     @Test
@@ -74,8 +83,6 @@ public class TesteBuscaProfessor {
         assertFalse(chris.getPredio().isEmpty());
     }
 
-
-
     @Test
     public void testeVerificaPeriodo(){
         //Fiz a busca
@@ -85,7 +92,6 @@ public class TesteBuscaProfessor {
 
         assertEquals(esperado, ynoguti.getPeriodo());
     }
-
 
     @Test
     public void testeNumeroDePrediosValido(){
@@ -106,6 +112,30 @@ public class TesteBuscaProfessor {
         assertNotEquals(11, renzo.getSala());
     }
 
+    @Test
+    public void testeVerificandoLetraMaiuscula() {
+
+        //Fiz a busca
+        Professor ynoguti = buscaProfessor.buscaProfessor(4);
+
+        //Faz assertion
+        assertNotEquals("carlos ynoguti", ynoguti.getNome());
+        assertNotEquals("segunda-feira", ynoguti.getHorarioAtendimento());
+        assertNotEquals("integral", ynoguti.getPeriodo());
+    }
+
+    @Test
+    public void testeVerificandoQuantidadeDeCaracteres() {
+
+        //Fiz a busca
+        Professor ynoguti = buscaProfessor.buscaProfessor(4);
+
+        int nome = ynoguti.getNome().length();
+
+        //Faz assertion
+        assertEquals(14, nome);
+    }
+
     //Espirito de Porco
     @Test(expected = NullPointerException.class)
     public void testeDefeito() {
@@ -116,8 +146,7 @@ public class TesteBuscaProfessor {
         assertEquals("Defeito", defeituoso.getNome());
     }
 
-
-    ////Espirito de Porco
+    //Espirito de Porco
     @Test
     public void testeVariavelSalaEscritaErrada() {
         //Fiz a busca
@@ -127,7 +156,7 @@ public class TesteBuscaProfessor {
         assertNotEquals("11", aquino.getSala());
     }
 
-    ////Espirito de Porco
+    //Espirito de Porco
     @Test
     public void testeVariavelPredioEscritaErrada() {
         //Fiz a busca
@@ -155,7 +184,7 @@ public class TesteBuscaProfessor {
 
         int esperado = 1;
 
-        assertNotEquals(esperado, marcelo.getPredio().size());
+        assertNotEquals(marcelo.getPredio().size(), esperado);
     }
 
     //Espirito de Porco
@@ -178,10 +207,38 @@ public class TesteBuscaProfessor {
         assertTrue( chris.getPredio().contains("4"));
     }
 
+    //Espirito de Porco
+    @Test
+    public void testePredioInexistenteDoProfessorInexistente(){
+        //Fiz a busca
+        Professor inexistente = buscaProfessor.buscaProfessor(-1);
 
+        ArrayList<String> prediosEsperados = new ArrayList<>();
+        prediosEsperados.add("Error");
 
+        assertEquals("Inexistente", inexistente.getNome());
+        assertEquals(prediosEsperados.toArray(), inexistente.getPredio().toArray());
+    }
 
+    //Espirito de Porco
+    @Test
+    public void testeHorarioDeAtendimentoInexistente(){
+        //Fiz a busca
+        Professor chris = buscaProfessor.buscaProfessor(1);
 
+        String horario_de_atendimento_correto = "Sexta-feira";
 
+        assertNotEquals(chris.getHorarioAtendimento(), horario_de_atendimento_correto);
+    }
 
+    //Espirito de Porco
+    @Test
+    public void testePeriodoDeAtendimentoEscritoEmOutroIdioma(){
+        //Fiz a busca
+        Professor marcelo = buscaProfessor.buscaProfessor(3);
+
+        String periodo_de_atendimento_correto = "Noturno";
+
+        assertNotEquals(marcelo.getPeriodo(), periodo_de_atendimento_correto);
+    }
 }

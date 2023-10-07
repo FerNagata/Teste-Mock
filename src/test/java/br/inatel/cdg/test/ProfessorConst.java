@@ -4,7 +4,7 @@ public class ProfessorConst {
     public static String CHRIS =
             "{ \"id\": 1, \n " +
                 "\"nome\": \"Chris Lima\", \n " +
-                "\"horarioDeAtendimento\": \"Sexta-feira\", \n " +
+                "\"horarioDeAtendimento\": \"Segunda-feira\", \n " +
                 "\"periodo\": \"Noturno\", \n " +
                 "\"sala\": \"16\", \n " +
                 "\"predio\": [\"4\"] }";
@@ -19,7 +19,7 @@ public class ProfessorConst {
             "{ \"id\": 3, \n " +
                 "\"nome\": \"Marcelo Cysneiros\", \n " +
                 "\"horarioDeAtendimento\": \"Quarta-feira\", \n " +
-                "\"periodo\": \"Noturno\", \n " +
+                "\"periodo\": \"At night\", \n " +
                 "\"sala\": \"6\", \n " +
                 "\"predio\": [\"2\", \"3\"] }";
     public static String YNOGUTI=
