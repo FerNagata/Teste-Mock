@@ -21,5 +21,5 @@ Para a instalação do Java JDK: https://www.oracle.com/br/java/technologies/dow
 ### Executando testes
 Para executar os testes, clone o código e rode o arquivo `TesteBuscaProfessor`
 
-Ou apenas clique no botão de play mostrado acima.
+OBS: caso você esteja usando o IntelliJ, você pode cliquar no botão de play mostrado acima (junto ao nome TesteBuscaProfessor).
 
