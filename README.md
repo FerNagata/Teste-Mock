@@ -4,6 +4,8 @@ Nesse exercíios foi criado 20 testes, sendo eles 10 testes para cenários de su
 
 Para os testes foram criados 7 tipos de respostas possíveis.
 
+**Observação: Foi feito um teste usando o framework mockito no arquivo `TesteBuscaProfessor_Mockito` (e esse mesmo teste se encontra junto aos outros testes).
+
 ---
 ### Integrantes
 
